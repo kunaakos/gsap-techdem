@@ -5,7 +5,6 @@ var cloud = $('.cloud');
 var hl1 = $('#hl-1');
 var hl2 = $('#hl-2');
 
-
 // cat animation
 var catKick = new TimelineMax({ autoRemoveChildren: false });
 catKick.to(cat, 5, { left: "110%", ease: Power0.easeNone }, 'kickStart')
