@@ -10,6 +10,7 @@
     bottom: 0%;
     left: -30%;
     width: 20%;
+    min-width: 140px;
     // transform: translateX(-182px);
   }
   .cloud {
@@ -17,6 +18,20 @@
     top: 10%;
     left: 100%;
     width: 40%;
+    min-width: 400px;
+  }
+  .trees {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: none;
+    @media screen and (max-width: 2000px) {
+      left: 50%;
+      transform: translateX(-1000px);
+    }
+    @media screen and (min-width: 2001px) {
+      width: 100%;
+    }
   }
   .hl {
     position: absolute;
@@ -27,6 +42,12 @@
     font-size: 10vh;
     color: white;
     opacity: 0;
+    @media screen and (max-width: 960px) {
+      font-size: 5em;
+    }
+    @media screen and (max-width: 640px) {
+      font-size: 3em;
+    }
   }
 }
 

@@ -5,29 +5,37 @@ var cloud = $('.cloud');
 var hl1 = $('#hl-1');
 var hl2 = $('#hl-2');
 
+
+// cat animation
+var catKick = new TimelineMax({ autoRemoveChildren: false });
+catKick.to(cat, 5, { left: "110%", ease: Power0.easeNone }, 'kickStart')
+       .to(cat, 5, { rotation: 1080, ease: Power1.easeOut }, 'kickStart')
+       .to(cat, 2.5, { bottom: "60%", ease: Power1.easeOut }, 'kickStart')
+       .to(cat, 2.5, { bottom: "-20%", ease: Power1.easeIn }, 'kickStart+=2.5')
+       .to(cat, 5, { left: "-30%", ease: Power1.easeNone }, 'kickBack')
+       .to(cat, 5, { rotation: 0, ease: Power1.easeOut }, 'kickBack')
+       .to(cat, 2.5, { bottom: "60%", ease: Power1.easeOut }, 'kickBack')
+       .to(cat, 2.5, { bottom: "-20%", ease: Power1.easeIn }, 'kickBack+=2.5')
+var catKickEnd = catKick.duration();
+
+// main timeline
 var t1 = new TimelineMax({
+  autoRemoveChildren: false,
   onUpdate: updateSlider,
   delay: 1
 });
 
-t1.to(cloud, 25, { left: "-100%" }, 0 );
-t1.to(cat, 5, { left: "110%", ease: Power0.easeNone }, 0)
-  .to(cat, 5, { rotation: 1080, ease: Power1.easeOut }, 0)
-  .to(cat, 2.5, { bottom: "60%", ease: Power1.easeOut }, 0)
-  .to(cat, 2.5, { bottom: "0%", ease: Power1.easeIn }, 2.5)
-  .to(cat, 5, { left: "-30%", rotation: 0, ease: Power1.easeOut }, 5)
-  .to(hl1, 1.5, { opacity: 1 }, 6)
-  .to(cat, 2.5, { bottom: "60%", ease: Power1.easeOut }, 5)
-  .to(cat, 2.5, { bottom: "0%", ease: Power1.easeIn }, 7.5)
-  .to(hl1, 1.5, { opacity: 0 }, 9)
-  .to(cat, 5, { left: "110%", ease: Power0.easeNone }, 10)
-  .to(cat, 5, { rotation: 1080, ease: Power1.easeOut }, 10)
-  .to(cat, 2.5, { bottom: "60%", ease: Power1.easeOut }, 10)
-  .to(cat, 2.5, { bottom: "0%", ease: Power1.easeIn }, 12.5)
-  .to(cat, 5, { left: "-30%", rotation: 0, ease: Power1.easeOut }, 15)
-  .to(cat, 2.5, { bottom: "60%", ease: Power1.easeOut }, 15)
+// add cloud animation
+t1.to(cloud, 25, { left: "-40%" }, 'start')
+
+// add catKick twice
+t1.add( catKick.tweenFromTo(0, catKickEnd), 'start' )
+  .add( catKick.tweenFromTo(0, catKickEnd),'start+=' + catKickEnd );
+
+// add text show/hide
+t1.to(hl1, 1.5, { opacity: 1 }, 6)
+  .to(hl1, 1.5, { opacity: 0 }, 11)
   .to(hl2, 1.5, { opacity: 1 }, 16)
-  .to(cat, 2.5, { bottom: "0%", ease: Power1.easeIn }, 17.5)
   .to(hl2, 1.5, { opacity: 0 }, 22);
 
 function updateSlider() {
