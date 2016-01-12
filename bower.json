@@ -1,5 +1,5 @@
 {
-  "name": "zf5_project",
+  "name": "gsap-techdem",
   "dependencies": {
     "foundation": "zurb/bower-foundation",
     "font-awesome": "~4.4.0",

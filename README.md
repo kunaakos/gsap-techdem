@@ -1,3 +1,3 @@
-## zf5_project
+## GSAP Tech Demo
 
-(place your readme here)
+Demonstrating GSAP with animation play controls. And a cat. See it in action [here](http://www.artificialdigital.com/tools/gsap/).
